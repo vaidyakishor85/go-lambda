@@ -79,13 +79,13 @@ func main() {
 
 		//fmt.Println(result)
 
-		err1 := unzipSource(aws.StringValue(f.FunctionName)+".zip", "D:/Study/Angular_Project/angular-httpclient-app-master/Groovy/go-lambda/New folder/")
+		err1 := unzipSource(aws.StringValue(f.FunctionName)+".zip", "./UnzipFunctions/")
 		if err1 != nil {
 			log.Fatal(err1)
 		}
 
 		// List files
-		files, err := ioutil.ReadDir("D:/Study/Angular_Project/angular-httpclient-app-master/Groovy/go-lambda/New folder/" + aws.StringValue(f.FunctionName))
+		files, err := ioutil.ReadDir("./UnzipFunctions/" + aws.StringValue(f.FunctionName))
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -96,7 +96,7 @@ func main() {
 			if ext1 == ".crt" {
 				var fname = aws.StringValue(f.FunctionName)
 				fmt.Println("File name with extension .crt:", file.Name())
-				var f = "D:/Study/Angular_Project/angular-httpclient-app-master/Groovy/go-lambda/New folder/" + aws.StringValue(f.FunctionName) + "/" + file.Name()
+				var f = "./UnzipFunctions/" + aws.StringValue(f.FunctionName) + "/" + file.Name()
 				r, _ := ioutil.ReadFile(f)
 				block, _ := pem.Decode(r)
 
