@@ -18,7 +18,7 @@ pipeline {
             steps {
 
                 //Run application
-                sh "go run main.go"
+                sh "nohup go run main.go 2>&1 &"
                 
             }
         }
