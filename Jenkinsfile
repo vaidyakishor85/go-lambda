@@ -9,7 +9,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/vaidyakishor85/go-lambda'
 
                 //Build application 
-                sh "go build main.go"
+                bat "go build main.go"
                 
             }
         }
@@ -18,7 +18,7 @@ pipeline {
             steps {
 
                 //Run application
-                sh "nohup go run main.go 2>&1 &"
+                bat "nohup go run main.go 2>&1 &"
                 
             }
         }
