@@ -16,7 +16,7 @@ pipeline {
 
         stage ('Deploy/Run') {
             environment {
-                CODECOV_TOKEN = credentials('codecov_token111')
+                CODECOV_TOKEN = "codecov_token111"
             }
             steps {          
 
