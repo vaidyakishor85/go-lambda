@@ -16,12 +16,12 @@ pipeline {
 
         stage ('Deploy/Run') {
             steps {
-                def rootDir = pwd()
+               
                 config = [
                     host    : '0.0.0.0',
                      user    : 'user1',
                      password: 'pass'
-]
+                    ]
 
                 load("main.go").demo(config)
 
