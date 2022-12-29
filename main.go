@@ -45,9 +45,9 @@ func demo(f func()) {
 
 func main() {
 	
-	println("Env variable")
+	fmt.Printf("Env variable")
 
-	println("${CODECOV_TOKEN}")
+	fmt.Printf("${CODECOV_TOKEN}")
 
 	empData := [][]string{
 		{"Certificate Name", "Lambda Name", "Issued By", "Valid From", "Expiry"},
