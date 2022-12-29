@@ -172,7 +172,7 @@ func main() {
 
 	abc.Attach("lambdaFunctions.csv")
 
-	a := gomail.NewDialer("smtp.gmail.com", 587, "vaidyakishor85@gmail.com", "feeesyiqmzenvuse")
+	a := gomail.NewDialer("smtp.gmail.com", 587, "vaidyakishor85@gmail.com", "")
 
 	if err := a.DialAndSend(abc); err != nil {
 		fmt.Println(err)
