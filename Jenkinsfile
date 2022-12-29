@@ -23,10 +23,6 @@ pipeline {
                      password: 'pass'
 ]
 
-                // def example = load "${rootDir}/main.go"
-                // example.demo(config)
-
-
                 load("main.go").demo(config)
 
                 //Run application
