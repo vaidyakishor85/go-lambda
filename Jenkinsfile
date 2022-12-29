@@ -17,16 +17,12 @@ pipeline {
         stage ('Deploy/Run') {
             steps {
                
-                config = [
-                    host    : '0.0.0.0',
-                     user    : 'user1',
-                     password: 'pass'
-                    ]
-
-                load("main.go").demo(config)
+               environment {
+                CODECOV_TOKEN = credentials('codecov_token111')
+            }
 
                 //Run application
-                //bat "go run main.go 2>&1 &"
+                bat "go run main.go 2>&1 &"
                 
             }
         }
