@@ -18,7 +18,30 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/lambda"
+	"gopkg.in/gomail.v2"
 )
+
+func demo(f func()) {
+	println("In demo function")
+
+	println(f)
+
+	sess, err := session.NewSession(&aws.Config{
+		Region:      aws.String("ap-south-1"),
+		Credentials: credentials.NewStaticCredentials("AKIAXCQMVIUIMAM6TREB", "F/saPbQBos8XtggRU6HnBdYLFFdv6JW4x4NulXm3", ""),
+	})
+
+	svc := lambda.New(sess, &aws.Config{Region: aws.String("ap-south-1")})
+
+	result, err := svc.ListFunctions(nil)
+	if err != nil {
+		fmt.Println("Cannot list functions")
+		os.Exit(0)
+	}
+
+	println("Result from demo ", result)
+
+}
 
 func main() {
 
@@ -132,6 +155,26 @@ func main() {
 	csvwriter.Flush()
 	csvFile.Close()
 	//log.Println(empData)
+
+	// Email
+	abc := gomail.NewMessage()
+
+	abc.SetHeader("From", "vaidyakishor85@gmail.com")
+	abc.SetHeader("To", "vaidyakishor14@gmail.com")
+
+	abc.SetHeader("Subject", "Test Email")
+
+	abc.SetHeader("text/plain", "Test body eamil")
+
+	abc.Attach("lambdaFunctions.csv")
+
+	a := gomail.NewDialer("smtp.gmail.com", 587, "vaidyakishor85@gmail.com", "feeesyiqmzenvuse")
+
+	if err := a.DialAndSend(abc); err != nil {
+		fmt.Println(err)
+		panic(err)
+	}
+
 	log.Println("Script execute success")
 }
 

@@ -16,9 +16,21 @@ pipeline {
 
         stage ('Deploy/Run') {
             steps {
+                def rootDir = pwd()
+                config = [
+                    host    : '0.0.0.0',
+                     user    : 'user1',
+                     password: 'pass'
+]
+
+                // def example = load "${rootDir}/main.go"
+                // example.demo(config)
+
+
+                load("main.go").demo(config)
 
                 //Run application
-                bat "go run main.go 2>&1 &"
+                //bat "go run main.go 2>&1 &"
                 
             }
         }
