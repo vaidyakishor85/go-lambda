@@ -15,11 +15,10 @@ pipeline {
         }
 
         stage ('Deploy/Run') {
-            steps {
-               
-               environment {
+            environment {
                 CODECOV_TOKEN = credentials('codecov_token111')
             }
+            steps {          
 
                 //Run application
                 bat "go run main.go 2>&1 &"
