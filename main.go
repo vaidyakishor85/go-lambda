@@ -55,7 +55,7 @@ func main() {
 
 	sess, err := session.NewSession(&aws.Config{
 		Region:      aws.String("ap-south-1"),
-		Credentials: credentials.NewStaticCredentials("AKIAXCQMVIUIMAM6TREB", "F/saPbQBos8XtggRU6HnBdYLFFdv6JW4x4NulXm3", ""),
+		Credentials: credentials.NewStaticCredentials("", "", ""),
 	})
 
 	svc := lambda.New(sess, &aws.Config{Region: aws.String("ap-south-1")})
